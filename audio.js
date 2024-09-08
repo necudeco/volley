@@ -1,6 +1,9 @@
 const threshold = 150; // Umbral para considerar un pico
 console.log("ALTURA DE PICO ", threshold);
 
+// Pedir Permiso
+let stream = navigator.mediaDevices.getUserMedia({ audio: true }).then(function(mediaStream){ stream = mediaStream });
+
 document.getElementById("startRecord").addEventListener('click', startRecord);
 document.getElementById("stopRecord").addEventListener('click', stopRecord);
 
@@ -14,6 +17,11 @@ let audioChunks = [];
 function redondear(num, decimales){
     const factor = Math.pow(10, decimales);
     return Math.round(num * factor) / factor;
+}
+
+function silbato(){
+    const audioPlayer = document.getElementById("audioPlayer");
+    audioPlayer.play();
 }
 
 async function sleep(ms) {
@@ -233,7 +241,7 @@ async function obtenerSonidosFuertes( canalDatos) {
 
 async function startRecord(){
       // Pedir permiso y capturar el audio del micrófono
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      //const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
       // Crear un objeto MediaRecorder
       mediaRecorder = new MediaRecorder(stream);
@@ -242,6 +250,7 @@ async function startRecord(){
         document.getElementById("stopRecord").focus();
         await sleep(1500);
 
+        silbato();
 
       // Iniciar la grabación
       mediaRecorder.start();
