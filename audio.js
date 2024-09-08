@@ -16,6 +16,11 @@ let audioBuffer = null;
 let mediaRecorder;
 let audioChunks = [];
 
+function log(str){
+    divResultados.innerHTML += "<br />";
+    divResultados.innerHTML += str;
+}
+
 function redondear(num, decimales){
     const factor = Math.pow(10, decimales);
     return Math.round(num * factor) / factor;
@@ -163,6 +168,8 @@ async function obtenerSonidosFuertes( canalDatos) {
 
     */
 
+    log ("Obtener Sonidos Fuertes");
+
     let canalDatosOrdenado = processArray2Object(canalDatos);
 
     const half = Math.floor( canalDatosOrdenado.length / 2 );
@@ -173,10 +180,11 @@ async function obtenerSonidosFuertes( canalDatos) {
 
     let diff = der.tiempo - izq.tiempo;
     
-    console.log(izq, der );
-    console.log("TIEMPO", diff, redondear( diff*1000, 2 ), "ms");
-    
-    divResultados.innerHTML = `TIEMPO ${diff} ${redondear( diff*1000, 2)} ms`
+    //console.log(izq, der );
+    //console.log("TIEMPO", diff, redondear( diff*1000, 2 ), "ms");
+    log ( JSON.stringify(izq) );
+    log ( JSON.stringify(der) );
+    log( `TIEMPO ${diff} ${redondear( diff*1000, 2)} ms` );
     return null;
 
     canalDatos = suavizarMediaMovil(canalDatos, 100);
