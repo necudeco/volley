@@ -145,6 +145,40 @@ async function processArray(canalDatos, limit = 0){
     return result;
 }
 
+async function trimAudio( canalDatos ){
+    console.log("trimAudio", "longitud Original", canalDatos.length);
+    let responseIzq = [];
+    let trimLeft = false;
+    for ( let e of canalDatos ){
+        if ( e == 0 && trimLeft == false ){
+            continue;
+        }
+
+        trimLeft = true;
+        responseIzq.push(e);
+    }
+    console.log("TrimLeft", "longitud", responseIzq.length);
+
+    let responseDer = [];
+    responseIzq.reverse();
+    trimLeft = false;
+    for ( let e of responseIzq ){
+        if ( e == 0 && trimLeft == false ){
+            continue;
+        }
+
+        trimLeft = true;
+        responseDer.push(e);
+    }
+    console.log("TrimRight", "longitud", responseDer.length);
+
+    responseDer.reverse();
+
+    return responseDer;
+
+
+}
+
 async function obtenerSonidosFuertes( canalDatos) {
     // Decodificar el ArrayBuffer en un AudioBuffer
     //const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
@@ -169,6 +203,8 @@ async function obtenerSonidosFuertes( canalDatos) {
     */
 
     log ("Obtener Sonidos Fuertes");
+
+    canalDatos = await trimAudio(canalDatos);
 
     let canalDatosOrdenado = processArray2Object(canalDatos);
 
