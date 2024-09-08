@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de Audio en Tiempo Real</title>
+</head>
+<body>
+    <h1>Captura de Audio en Tiempo Real</h1>
+    <div>
+        <label>Player</label>
+        <input type="text" />
+    </div>
+
+    
+
+    <br />
+    <small>Hacer click en Iniciar Grabacion y realizar un saque hacia una pared a 9 metros de distanticia</small>
+    <br />
+    <small>El sistema detectara dos fuertes sonidos, uno al golpear el balon con la mano. Y el otro al chocar el balon contra la pared.</small>
+    <br />
+    <small>En el grafico debe visualizarse uno al lado izquierdo y otro al derecho.</small>
+    <canvas id="canvas" width="800" height="400"></canvas>
+
+    <br />
+
+    <button id="startRecord">Iniciar Grabacion</button>
+    <button id="stopRecord">Stop Grabacion</button>
+
+    <button id="startButton">Analizar</button>
+    
+    <script src="waveform.js"></script>
+
+    <script src="audio.js"></script>
+</body>
+</html>
