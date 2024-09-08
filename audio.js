@@ -7,6 +7,8 @@ let stream = navigator.mediaDevices.getUserMedia({ audio: true }).then(function(
 document.getElementById("startRecord").addEventListener('click', startRecord);
 document.getElementById("stopRecord").addEventListener('click', stopRecord);
 
+const divResultados = document.getElementById("resultados");
+
 const audioPlayback = document.getElementById('audioPlayback');
 let arrayBuffer = null;
 let audioBuffer = null;
@@ -173,6 +175,8 @@ async function obtenerSonidosFuertes( canalDatos) {
     
     console.log(izq, der );
     console.log("TIEMPO", diff, redondear( diff*1000, 2 ), "ms");
+    
+    divResultados.innerHTML = `TIEMPO ${diff} ${redondear( diff*1000, 2)} ms`
     return null;
 
     canalDatos = suavizarMediaMovil(canalDatos, 100);

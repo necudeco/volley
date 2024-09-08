@@ -20,7 +20,7 @@
     <small>El sistema detectara dos fuertes sonidos, uno al golpear el balon con la mano. Y el otro al chocar el balon contra la pared.</small>
     <br />
     <small>En el grafico debe visualizarse uno al lado izquierdo y otro al derecho.</small>
-    <canvas id="canvas" width="800" height="400"></canvas>
+    <canvas id="canvas" style="width: 100%; height: 200px;border: 1px solid red;" ></canvas>
 
     <audio id="audioPlayer" src="silbato.mp3" style="display: none;"></audio>
 
@@ -31,8 +31,10 @@
 
     <button id="startButton">Analizar</button>
     
-    <script src="waveform.js"></script>
+    <br>
+    <div id="resultados"></div>
 
+    <script src="waveform.js"></script>
     <script src="audio.js"></script>
 </body>
 </html>
